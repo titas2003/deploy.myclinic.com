@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myclinic-db
+  labels:
+    app: db.myclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db.myclinic
+  template:
+    metadata:
+      labels:
+        app: db.myclinic
+    spec:
+      containers:
+        - name: myclinic-db
+          image: mongo:latest
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: myclinic-db
+              mountPath: /data
+      volumes:
+        - name: myclinic-db
+          hostPath:
+            path: /home/devopsadmin/myclinic.com/db.myclinic.com
+            type: DirectoryOrCreate
+    

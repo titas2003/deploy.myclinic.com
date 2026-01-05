@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myclinic-api 
+  labels:
+    app: api.myclinic.com
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api.myclinic.com
+  template:
+    metadata:
+      labels:
+        app: api.myclinic.com
+    spec:
+      containers:
+        - name: myclinic
+          image: titas2003/myclinic:v1.5
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT 
+              value: "3000"
+            - name: MONGO_URI
+              value: "mongodb://65.2.56.225:30017/myclinic-db"
