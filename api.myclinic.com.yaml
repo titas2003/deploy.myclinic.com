@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: myclinic
-          image: titas2003/myclinic:v1.6
+          image: titas2003/myclinic:v1.7
           ports:
             - containerPort: 3000
           env:
