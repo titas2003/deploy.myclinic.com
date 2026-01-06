@@ -5,7 +5,7 @@ metadata:
   labels:
     app: api.myclinic.com
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: api.myclinic.com
